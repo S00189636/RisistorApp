@@ -1,0 +1,53 @@
+package edu.mohamedshiha.risistorapp;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+
+public class ToleranceSpinnerAdapter extends ArrayAdapter<ToleranceChart> {
+    public ToleranceSpinnerAdapter(@NonNull Context context, ArrayList<ToleranceChart> itemsList) {
+        super(context, 0,itemsList);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return InitView(position, convertView, parent);
+    }
+
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        return InitView(position, convertView, parent);
+    }
+
+
+    private View InitView(int pos,View convertView,ViewGroup parent){
+
+        if(convertView == null){
+            convertView = LayoutInflater.from(getContext()).inflate(
+              R.layout.bandchart_spinner_item,parent,false
+            );
+        }
+
+        ImageView backgroundColourImage = convertView.findViewById(R.id.Image_Background_SpinnerItem);
+        TextView TV_colourName = convertView.findViewById(R.id.TV_SpinnerItem_ColourName);
+        TextView TV_colourValue = convertView.findViewById(R.id.TV_SpinnerItem_ColourValue);
+
+        ToleranceChart item = getItem(pos);
+
+        backgroundColourImage.setBackgroundColor(Color.parseColor(item.getColourHex()));
+        TV_colourName.setText("  "+item.name());
+        TV_colourValue.setText(" - "+item.getValueString()+" ");
+        return convertView;
+    }
+}

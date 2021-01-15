@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RisistorApp - S00189636</string>
+    <string name="band_1">Band 1</string>
+    <string name="tolerance">Tolerance</string>
+    <string name="multiplier">Multiplier</string>
+    <string name="band_2">Band 2</string>
+    <string name="title_name">Resistor Calculator</string>
+    <string name="Ohm_icon">Ω</string>
+</resources>
